@@ -1,4 +1,4 @@
-#Blog
+# Blog
 ![Gem Version](https://img.shields.io/gem/v/jekyll-theme-simple-texture.svg)
 
 copyed from Simple Texture Jekyll Theme
