@@ -1,6 +1,13 @@
 [
   
     {
+      "title"      : "Git Error - ERROR: Permission to XXX.git denied to ZZZ.",
+      "url"        : "/blog/2018/09/15/Git-Error/",
+      "date"       : "2018-09-15 00:00:00 +0800",
+      "shortdate"  : "September 15, 2018"
+    } ,
+  
+    {
       "title"      : "A quick demo of Simple Texture theme&#39;s code highlighting features",
       "url"        : "/blog/2017/05/27/code-highlighting/",
       "date"       : "2017-05-27 00:00:00 +0800",
@@ -12,13 +19,6 @@
       "url"        : "/blog/2017/05/25/quick-kramdown-demo/",
       "date"       : "2017-05-25 00:00:00 +0800",
       "shortdate"  : "May 25, 2017"
-    } ,
-  
-    {
-      "title"      : "Hello World!",
-      "url"        : "/blog/2013/04/22/hello-world/",
-      "date"       : "2013-04-22 00:00:00 +0800",
-      "shortdate"  : "April 22, 2013"
     } 
   
 ]
