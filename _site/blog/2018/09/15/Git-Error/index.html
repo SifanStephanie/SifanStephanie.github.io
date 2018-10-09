@@ -191,18 +191,51 @@
 
 <p><strong>There are the steps:</strong></p>
 
-<p><strong>1. Get a new SSH KEY</strong></p>
+<p><strong>1. Get a new SSH Key</strong></p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-keygen -t rsa -C “any_name_you_want”
 </code></pre></div></div>
 
-<p>The <em>id_rsa</em> is the old key on your computer, so you could make a new file to save your new key and make passphrase for it (it is ok to have no passphrase).</p>
+<p>The <em>id_rsa</em> is the old key on your computer, so you could make a new file("ur_new_ssh_key_name") to save your new key and make passphrase for it (it is ok to have no passphrase).</p>
 
 <p><strong>2. Put your new key on the GitHub</strong></p>
 
-<p>Just using the <em>“New SSH key”</em> button and add your key to make a new SSH KEY.</p>
+<p>Just using the <em>“New SSH key”</em> button and add your key to make a new SSH Key.</p>
 
 <p><strong>3. Generate ~/.ssh/config</strong></p>
+
+<p>if there is no config file, using</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>touch config
+</code></pre></div></div>
+<p>to make a new config file.
+Using vim or any editor you like to write the config file as:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Host</span>  <span class="no">Ur_new_github_host_name</span>
+<span class="no">HostName</span> <span class="n">github</span><span class="p">.</span><span class="nf">com</span>
+<span class="no">User</span> <span class="n">git</span>
+<span class="no">IndentityFile</span> <span class="o">~</span><span class="sr">/.ssh/u</span><span class="n">r_new_ssh_key_name</span></code></pre></figure>
+
+<p>save your config file, if you want to check it, using</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cat config
+</code></pre></div></div>
+<p>to view your config file.</p>
+
+<p><strong>4, Change the git@github.com to Ur_new_github_host_name</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    git remote set-url origin Ur_new_github_host_name:XXX.git
+</code></pre></div></div>
+<p>Then you can using different accounts to access Github!
+Check it with :</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    ssh -T Ur_new_github_host_name  
+    ssh -T github@github.com
+</code></pre></div></div>
+<p><strong>If it still could not work… Try to put your SSH Key into the sshAgent!</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    eval "$(ssh-agent -s)”
+    //add your new key
+    ssh-add ur_new_ssh_key_name
+    //add your original key
+    ssh-add id_rsa
+</code></pre></div></div>
+<p>Then everything would be all right!</p>
 
 
                     </div>

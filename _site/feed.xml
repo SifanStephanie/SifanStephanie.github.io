@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2018-10-08T17:35:47+08:00</updated><id>http://localhost:4000/</id><title type="html">SifanStephanie</title><subtitle>Be Foolish.</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;job_title&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;&quot;sifanl@andrew.cmu.edu&quot;, &quot;social_links&quot;=&gt;[{&quot;name&quot;=&gt;&quot;facebook&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;github&quot;, &quot;url&quot;=&gt;&quot;https://github.com/SifanStephanie/SifanStephanie.github.io&quot;}, {&quot;name&quot;=&gt;&quot;instagram&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;linkedin&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;stackoverflow&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;twitter&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;vk&quot;, &quot;url&quot;=&gt;nil}]}</name><email>sifanl@andrew.cmu.edu</email></author><entry><title type="html">Git Error - ERROR: Permission to XXX.git denied to ZZZ.</title><link href="http://localhost:4000/blog/2018/09/15/Git-Error/" rel="alternate" type="text/html" title="Git Error - ERROR: Permission to XXX.git denied to ZZZ." /><published>2018-09-15T00:00:00+08:00</published><updated>2018-09-15T00:00:00+08:00</updated><id>http://localhost:4000/blog/2018/09/15/Git-Error</id><content type="html" xml:base="http://localhost:4000/blog/2018/09/15/Git-Error/">&lt;h1 id=&quot;heading-git-error---error-permission-to-xxxgit-denied-to-zzz&quot;&gt;Git Error - ERROR: Permission to XXX.git denied to ZZZ.&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2018-10-09T14:21:02+08:00</updated><id>http://localhost:4000/</id><title type="html">SifanStephanie</title><subtitle>Be Foolish.</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;job_title&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;&quot;sifanl@andrew.cmu.edu&quot;, &quot;social_links&quot;=&gt;[{&quot;name&quot;=&gt;&quot;facebook&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;github&quot;, &quot;url&quot;=&gt;&quot;https://github.com/SifanStephanie/SifanStephanie.github.io&quot;}, {&quot;name&quot;=&gt;&quot;instagram&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;linkedin&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;stackoverflow&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;twitter&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;vk&quot;, &quot;url&quot;=&gt;nil}]}</name><email>sifanl@andrew.cmu.edu</email></author><entry><title type="html">Git Error - ERROR: Permission to XXX.git denied to ZZZ.</title><link href="http://localhost:4000/blog/2018/09/15/Git-Error/" rel="alternate" type="text/html" title="Git Error - ERROR: Permission to XXX.git denied to ZZZ." /><published>2018-09-15T00:00:00+08:00</published><updated>2018-09-15T00:00:00+08:00</updated><id>http://localhost:4000/blog/2018/09/15/Git-Error</id><content type="html" xml:base="http://localhost:4000/blog/2018/09/15/Git-Error/">&lt;h1 id=&quot;heading-git-error---error-permission-to-xxxgit-denied-to-zzz&quot;&gt;Git Error - ERROR: Permission to XXX.git denied to ZZZ.&lt;/h1&gt;
 
 &lt;p&gt;I want to use one key for two accounts of myself to access Github, but Github could not be able to tell which of my account I want to use.  This means that I could not have many accounts using the same public key, because GitHub could not identify which one of me is using, then there is no security.&lt;/p&gt;
 
@@ -11,18 +11,51 @@
 
 &lt;p&gt;&lt;strong&gt;There are the steps:&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;1. Get a new SSH KEY&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. Get a new SSH Key&lt;/strong&gt;&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh-keygen -t rsa -C “any_name_you_want”
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;The &lt;em&gt;id_rsa&lt;/em&gt; is the old key on your computer, so you could make a new file to save your new key and make passphrase for it (it is ok to have no passphrase).&lt;/p&gt;
+&lt;p&gt;The &lt;em&gt;id_rsa&lt;/em&gt; is the old key on your computer, so you could make a new file(&quot;ur_new_ssh_key_name&quot;) to save your new key and make passphrase for it (it is ok to have no passphrase).&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;2. Put your new key on the GitHub&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Just using the &lt;em&gt;“New SSH key”&lt;/em&gt; button and add your key to make a new SSH KEY.&lt;/p&gt;
+&lt;p&gt;Just using the &lt;em&gt;“New SSH key”&lt;/em&gt; button and add your key to make a new SSH Key.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;3. Generate ~/.ssh/config&lt;/strong&gt;&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;job_title&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;&quot;sifanl@andrew.cmu.edu&quot;, &quot;social_links&quot;=&gt;[{&quot;name&quot;=&gt;&quot;facebook&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;github&quot;, &quot;url&quot;=&gt;&quot;https://github.com/SifanStephanie/SifanStephanie.github.io&quot;}, {&quot;name&quot;=&gt;&quot;instagram&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;linkedin&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;stackoverflow&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;twitter&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;vk&quot;, &quot;url&quot;=&gt;nil}]}</name><email>sifanl@andrew.cmu.edu</email></author><category term="Git" /><category term="Tools" /><summary type="html">Git Error - ERROR: Permission to XXX.git denied to ZZZ.</summary></entry><entry><title type="html">A quick demo of Simple Texture theme's code highlighting features</title><link href="http://localhost:4000/blog/2017/05/27/code-highlighting/" rel="alternate" type="text/html" title="A quick demo of Simple Texture theme's code highlighting features" /><published>2017-05-27T00:00:00+08:00</published><updated>2017-05-27T00:00:00+08:00</updated><id>http://localhost:4000/blog/2017/05/27/code-highlighting</id><content type="html" xml:base="http://localhost:4000/blog/2017/05/27/code-highlighting/">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;3. Generate ~/.ssh/config&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;if there is no config file, using&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;touch config
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;to make a new config file.
+Using vim or any editor you like to write the config file as:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;no&quot;&gt;Host&lt;/span&gt;  &lt;span class=&quot;no&quot;&gt;Ur_new_github_host_name&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;HostName&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;github&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;com&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;git&lt;/span&gt;
+&lt;span class=&quot;no&quot;&gt;IndentityFile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;~&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/.ssh/u&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r_new_ssh_key_name&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;save your config file, if you want to check it, using&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cat config
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;to view your config file.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4, Change the git@github.com to Ur_new_github_host_name&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    git remote set-url origin Ur_new_github_host_name:XXX.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Then you can using different accounts to access Github!
+Check it with :&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    ssh -T Ur_new_github_host_name  
+    ssh -T github@github.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;If it still could not work… Try to put your SSH Key into the sshAgent!&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    eval &quot;$(ssh-agent -s)”
+    //add your new key
+    ssh-add ur_new_ssh_key_name
+    //add your original key
+    ssh-add id_rsa
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Then everything would be all right!&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;job_title&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;&quot;sifanl@andrew.cmu.edu&quot;, &quot;social_links&quot;=&gt;[{&quot;name&quot;=&gt;&quot;facebook&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;github&quot;, &quot;url&quot;=&gt;&quot;https://github.com/SifanStephanie/SifanStephanie.github.io&quot;}, {&quot;name&quot;=&gt;&quot;instagram&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;linkedin&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;stackoverflow&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;twitter&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;vk&quot;, &quot;url&quot;=&gt;nil}]}</name><email>sifanl@andrew.cmu.edu</email></author><category term="Git" /><category term="Tools" /><summary type="html">Git Error - ERROR: Permission to XXX.git denied to ZZZ.</summary></entry><entry><title type="html">A quick demo of Simple Texture theme's code highlighting features</title><link href="http://localhost:4000/blog/2017/05/27/code-highlighting/" rel="alternate" type="text/html" title="A quick demo of Simple Texture theme's code highlighting features" /><published>2017-05-27T00:00:00+08:00</published><updated>2017-05-27T00:00:00+08:00</updated><id>http://localhost:4000/blog/2017/05/27/code-highlighting</id><content type="html" xml:base="http://localhost:4000/blog/2017/05/27/code-highlighting/">&lt;blockquote&gt;
   &lt;p&gt;This is code blocks and highlighting test page for &lt;a href=&quot;https://github.com/yizeng/jekyll-theme-simple-texture&quot;&gt;Simple Texture&lt;/a&gt; theme.&lt;/p&gt;
 &lt;/blockquote&gt;
 
