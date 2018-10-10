@@ -13,9 +13,9 @@ Using brew to download a package on Mac may occur the problem that could not wri
 Since brew could not support run by root, and normal user could not write to /usr/local.  Therefore, we need to modify the authority for /usr/local
 
 However, since Mac enables the Rootless mechanism to protect the core, enter:
-'''
+```
 csrutil status
-'''
+```
 
 on terminal, and it shows:
 {% highlight ruby %}
@@ -27,20 +27,20 @@ which means the Rootless protection in enabled on your Mac.
 There are several ways to solve the problem
 
 **1.Force to update brew**
-'''
+```
  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; 
-'''
+```
 
 **2. close Rootless**
 Restart your mac and press *command+R* at the same time to enter the recover mode.
 Find the terminal in the menu and enter 
-'''
+```
 csrutil disable
-'''
+```
 
 and restart your computer, then you could find that:
 {% highlight ruby %}
-System Integrity Protection status: enabled.
+System Integrity Protection status: disabled.
 {% endhighlight %}
 
 now your could use *sudo* to change the authority.

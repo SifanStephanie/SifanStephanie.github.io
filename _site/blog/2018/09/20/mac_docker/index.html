@@ -13,22 +13,22 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Quick kramdown demo | SifanStephanie</title>
+<title>Mac update to 10.+ using brew cannot write to /usr/local | SifanStephanie</title>
 <meta name="generator" content="Jekyll v3.7.4" />
-<meta property="og:title" content="Quick kramdown demo" />
+<meta property="og:title" content="Mac update to 10.+ using brew cannot write to /usr/local" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="A quick demo post to some kramdown features." />
-<meta property="og:description" content="A quick demo post to some kramdown features." />
-<link rel="canonical" href="http://localhost:4000/blog/2017/05/25/quick-kramdown-demo/" />
-<meta property="og:url" content="http://localhost:4000/blog/2017/05/25/quick-kramdown-demo/" />
+<meta name="description" content="Mac升级10.1.3后出现了brew 下载第三方包,不能写入/usr/local的问题" />
+<meta property="og:description" content="Mac升级10.1.3后出现了brew 下载第三方包,不能写入/usr/local的问题" />
+<link rel="canonical" href="http://localhost:4000/blog/2018/09/20/mac_docker/" />
+<meta property="og:url" content="http://localhost:4000/blog/2018/09/20/mac_docker/" />
 <meta property="og:site_name" content="SifanStephanie" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2017-05-25T00:00:00+08:00" />
+<meta property="article:published_time" content="2018-09-20T00:00:00+08:00" />
 <script type="application/ld+json">
-{"description":"A quick demo post to some kramdown features.","@type":"BlogPosting","url":"http://localhost:4000/blog/2017/05/25/quick-kramdown-demo/","headline":"Quick kramdown demo","dateModified":"2017-05-25T00:00:00+08:00","datePublished":"2017-05-25T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/2017/05/25/quick-kramdown-demo/"},"@context":"http://schema.org"}</script>
+{"description":"Mac升级10.1.3后出现了brew 下载第三方包,不能写入/usr/local的问题","@type":"BlogPosting","url":"http://localhost:4000/blog/2018/09/20/mac_docker/","headline":"Mac update to 10.+ using brew cannot write to /usr/local","dateModified":"2018-09-20T00:00:00+08:00","datePublished":"2018-09-20T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/2018/09/20/mac_docker/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-<meta name="keywords" content="demo,jekyll" />
+<meta name="keywords" content="brew" />
 
 
 
@@ -120,7 +120,7 @@
             <header>
                 <div class="unit-head">
                     <div class="unit-inner unit-head-inner">
-                        <h1 class="entry-title" itemprop="name">Quick kramdown demo</h1>
+                        <h1 class="entry-title" itemprop="name">Mac update to 10.+ using brew cannot write to /usr/local</h1>
                     </div>
                 </div>
             </header>
@@ -130,7 +130,7 @@
                         <p class="date-publish">
                             Published:
                             <time itemprop="datePublished" class="date-pub updated"
-                                title="2017-05-25T00:00:00+08:00" datetime="2017-05-25T00:00:00+08:00">May 25, 2017 </time>
+                                title="2018-09-20T00:00:00+08:00" datetime="2018-09-20T00:00:00+08:00">September 20, 2018 </time>
                             by
                             <a class="author" href="/" rel="author" title="Show Author">
                                 <span itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -149,8 +149,8 @@
                              
      
         <li>
-            <a href="/blog/categories/#demo" title="demo">
-            demo <span>2</span></a>
+            <a href="/blog/categories/#Tools" title="Tools">
+            Tools <span>2</span></a>
         </li>
     
 
@@ -163,12 +163,7 @@
     
         
         <li>
-            <a href="/blog/tags/#demo" title="demo">demo <span>2</span></a>
-        </li>
-    
-        
-        <li>
-            <a href="/blog/tags/#jekyll" title="jekyll">jekyll <span>2</span></a>
+            <a href="/blog/tags/#brew" title="brew">brew <span>1</span></a>
         </li>
     
 
@@ -178,224 +173,41 @@
                         </ul>
                     </div>
                     <div itemprop="articleBody">
-                        <blockquote>
-  <p>This is <a href="https://kramdown.gettalong.org/">kramdown</a> formatting test page for <a href="https://github.com/yizeng/jekyll-theme-simple-texture">Simple Texture</a> theme.</p>
-</blockquote>
+                        <p>Using brew to download a package on Mac may occur the problem that could not write to /usr/local.</p>
 
-<ul class="toc" id="markdown-toc">
-  <li><a href="#heading-general-usage" id="markdown-toc-heading-general-usage">General Usage</a>    <ul>
-      <li><a href="#heading-blockquotes" id="markdown-toc-heading-blockquotes">Blockquotes</a>        <ul>
-          <li><a href="#heading-nested" id="markdown-toc-heading-nested">Nested</a></li>
-          <li><a href="#heading-lists-inside" id="markdown-toc-heading-lists-inside">Lists inside</a></li>
-          <li><a href="#heading-long-lines" id="markdown-toc-heading-long-lines">Long lines</a></li>
-        </ul>
-      </li>
-      <li><a href="#heading-lists" id="markdown-toc-heading-lists">Lists</a></li>
-      <li><a href="#heading-tables" id="markdown-toc-heading-tables">Tables</a></li>
-      <li><a href="#heading-horizontal-rules" id="markdown-toc-heading-horizontal-rules">Horizontal Rules</a></li>
-      <li><a href="#heading-images" id="markdown-toc-heading-images">Images</a></li>
-    </ul>
-  </li>
-</ul>
+<p>Since brew could not support run by root, and normal user could not write to /usr/local.  Therefore, we need to modify the authority for /usr/local</p>
 
-<h1 id="heading-general-usage">General Usage</h1>
+<p>However, since Mac enables the Rootless mechanism to protect the core, enter:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>csrutil status
+</code></pre></div></div>
 
-<p>This is a normal paragraph.</p>
+<p>on terminal, and it shows:</p>
 
-<p>This is <a href="https://yizeng.me">a link</a> to my homepage.
-A <a href="https://yizeng.me/blog" title="Yi Zeng's Blog">link</a> can also have a title.</p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">System</span> <span class="no">Integrity</span> <span class="no">Protection</span> <span class="ss">status: </span><span class="n">enabled</span><span class="o">.</span></code></pre></figure>
 
-<p>This is a <strong><em>text with light and strong emphasis</em></strong>.</p>
+<p>which means the Rootless protection in enabled on your Mac.</p>
 
-<p>This <strong>is <em>emphasized</em> as well</strong>.</p>
+<p>There are several ways to solve the problem</p>
 
-<p>This <em>does _not_ work</em>.</p>
+<p><strong>1.Force to update brew</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; 
+</code></pre></div></div>
 
-<p>This <strong>does __not__ work either</strong>.</p>
+<p><strong>2. close Rootless</strong>
+Restart your mac and press <em>command+R</em> at the same time to enter the recover mode.
+Find the terminal in the menu and enter</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>csrutil disable
+</code></pre></div></div>
 
-<p>This is a footnote<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>.</p>
+<p>and restart your computer, then you could find that:</p>
 
-<p>This scarcely known tag emulates <kbd>keyboard text</kbd>, which is usually styled like the <code class="highlighter-rouge">&lt;code&gt;</code> tag.</p>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">System</span> <span class="no">Integrity</span> <span class="no">Protection</span> <span class="ss">status: </span><span class="n">disabled</span><span class="o">.</span></code></pre></figure>
 
-<p>This tag should denote <ins>inserted</ins> text.</p>
+<p>now your could use <em>sudo</em> to change the authority.</p>
 
-<p>The emphasize tag should <em>italicize</em> text.</p>
+<p><strong>!!Using ''' csrutil enable''' to change It Back After Finished!!</strong></p>
 
-<p>This tag will let you <strike>strikeout text</strike>.</p>
-
-<h2 id="heading-blockquotes">Blockquotes</h2>
-
-<blockquote>
-  <p>ruby -v</p>
-
-  <p>tsc -v</p>
-</blockquote>
-
-<h3 id="heading-nested">Nested</h3>
-
-<blockquote>
-  <p>This is a paragraph in blockquote.</p>
-
-  <blockquote>
-    <p>A nested blockquote.</p>
-  </blockquote>
-
-</blockquote>
-
-<h3 id="heading-lists-inside">Lists inside</h3>
-
-<blockquote>
-  <p>Unordered List</p>
-  <ul>
-    <li>lists one</li>
-    <li>lists two</li>
-    <li>lists three</li>
-  </ul>
-
-  <p>Ordered List</p>
-  <ol>
-    <li>lists one</li>
-    <li>lists two</li>
-    <li>lists three</li>
-  </ol>
-</blockquote>
-
-<h3 id="heading-long-lines">Long lines</h3>
-
-<blockquote>
-  <p>Jekyll is a simple, blog-aware, static site generator perfect for personal, project, or organization sites. Think of it like a file-based CMS, without all the complexity. Jekyll takes your content, renders Markdown and Liquid templates, and spits out a complete, static website ready to be served by Apache, Nginx or another web server. Jekyll is the engine behind GitHub Pages, which you can use to host sites right from your GitHub repositories.</p>
-</blockquote>
-
-<h2 id="heading-lists">Lists</h2>
-
-<ul>
-  <li>list 1 item 1
-    <ul>
-      <li>nested list item 1</li>
-      <li>nested list item 2</li>
-      <li>nested list item 3 with blockquote
-        <blockquote>
-          <p>ruby -v</p>
-
-          <p>tsc -v</p>
-        </blockquote>
-      </li>
-    </ul>
-  </li>
-  <li>list 1 item 2</li>
-  <li>list 1 item 3</li>
-</ul>
-
-<h2 id="heading-tables">Tables</h2>
-
-<ul>
-  <li>
-    <p>Table 1</p>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Default aligned</th>
-          <th style="text-align: left">Left aligned</th>
-          <th style="text-align: center">Center aligned</th>
-          <th style="text-align: right">Right aligned</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>First body part</td>
-          <td style="text-align: left">Second cell</td>
-          <td style="text-align: center">Third cell</td>
-          <td style="text-align: right">fourth cell</td>
-        </tr>
-        <tr>
-          <td>Second line</td>
-          <td style="text-align: left">foo</td>
-          <td style="text-align: center"><strong>strong</strong></td>
-          <td style="text-align: right">baz</td>
-        </tr>
-        <tr>
-          <td>Third line</td>
-          <td style="text-align: left">quux</td>
-          <td style="text-align: center">baz</td>
-          <td style="text-align: right">bar</td>
-        </tr>
-        <tr>
-          <td>Footer row</td>
-          <td style="text-align: left"> </td>
-          <td style="text-align: center"> </td>
-          <td style="text-align: right"> </td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <p>Table 2</p>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Default aligned</th>
-          <th style="text-align: left">Left aligned</th>
-          <th style="text-align: center">Center aligned</th>
-          <th style="text-align: right">Right aligned</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>First body part</td>
-          <td style="text-align: left">Second cell</td>
-          <td style="text-align: center">Third cell</td>
-          <td style="text-align: right">fourth cell</td>
-        </tr>
-        <tr>
-          <td>Second line</td>
-          <td style="text-align: left">foo</td>
-          <td style="text-align: center"><strong>strong</strong></td>
-          <td style="text-align: right">baz</td>
-        </tr>
-        <tr>
-          <td>Third line</td>
-          <td style="text-align: left">quux</td>
-          <td style="text-align: center">baz</td>
-          <td style="text-align: right">bar</td>
-        </tr>
-        <tr>
-          <td>Footer row</td>
-          <td style="text-align: left"> </td>
-          <td style="text-align: center"> </td>
-          <td style="text-align: right"> </td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-</ul>
-
-<h2 id="heading-horizontal-rules">Horizontal Rules</h2>
-
-<hr />
-
-<hr />
-
-<hr />
-
-<hr />
-
-<h2 id="heading-images">Images</h2>
-
-<p>Here comes an image!</p>
-
-<p><a class="post-image" href="https://kramdown.gettalong.org/overview.png">
-<img itemprop="image" data-src="https://kramdown.gettalong.org/overview.png" src="/assets/javascripts/unveil/loader.gif" alt="Kramdown Overview" />
-</a></p>
-
-<div class="footnotes">
-  <ol>
-    <li id="fn:1">
-      <p>This is a footnote. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
-    </li>
-  </ol>
-</div>
+<p><strong>3. Just go to the official website to download…</strong></p>
 
                     </div>
                 </div>
@@ -408,8 +220,8 @@ A <a href="https://yizeng.me/blog" title="Yi Zeng's Blog">link</a> can also have
                     </div>
                     <nav class="pagination">
                         
+                            <a class="internal" rel="prev" href="/blog/2018/09/15/Git-Error/" title=" 'Git Error - ERROR: Permission to XXX.git denied to ZZZ.'"> ← Git Error - ERROR: Permission to XXX.git denied to ZZZ.</a>
                         
-                            <a class="internal" rel="next" href="/blog/2017/05/27/code-highlighting/" title="Next Post 'A quick demo of Simple Texture theme's code highlighting features'">A quick demo of Simple Texture theme's code highlighting features → </a>
                         
                     </nav>
                 </div>
@@ -454,7 +266,7 @@ A <a href="https://yizeng.me/blog" title="Yi Zeng's Blog">link</a> can also have
 </script>
 
                     <div class="comments">
-                        <button class="center-block show-hidden" title="Show Comments" data-disqus-url="http://localhost:4000/blog/2017/05/25/quick-kramdown-demo/">Show Comments</button>
+                        <button class="center-block show-hidden" title="Show Comments" data-disqus-url="http://localhost:4000/blog/2018/09/20/mac_docker/">Show Comments</button>
                         <div id="disqus_thread"></div>
                     </div>
                 
