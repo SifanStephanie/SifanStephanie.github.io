@@ -13,7 +13,9 @@ There are two general ways for traversing a tree (not restrict to trees’ trave
 
 The traverse means that we start from some point P, and we go through all the points which connected to P, and repeat these process until all the points have been  visited. 
 
-Here we just talk about the tree traversal.
+Here we just talk about the tree traversal based on this tree below:
+![image01](http://sifanstephanie.github.io/assets/images/posts/tree1.png)
+
 
 **BFS:** BFS means that we first go through all the children which connected to the root(A), which is B and C. And then we search from the first child B to get D, and we search from the second child C to get E and F. Because we could not get any nodes from D E and F. Then it is done! The sequence is *ABCDEF*
 
