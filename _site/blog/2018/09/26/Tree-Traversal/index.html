@@ -13,22 +13,22 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <!-- Begin Jekyll SEO tag v2.5.0 -->
-<title>Mac update to 10.+ using brew cannot write to /usr/local | SifanStephanie</title>
+<title>Tree Traversal | SifanStephanie</title>
 <meta name="generator" content="Jekyll v3.7.4" />
-<meta property="og:title" content="Mac update to 10.+ using brew cannot write to /usr/local" />
+<meta property="og:title" content="Tree Traversal" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="Mac升级10.1.3后出现了brew 下载第三方包,不能写入/usr/local的问题" />
-<meta property="og:description" content="Mac升级10.1.3后出现了brew 下载第三方包,不能写入/usr/local的问题" />
-<link rel="canonical" href="http://localhost:4000/blog/2018/09/20/mac_docker/" />
-<meta property="og:url" content="http://localhost:4000/blog/2018/09/20/mac_docker/" />
+<meta name="description" content="二叉树递归+非递归版本的dfs+bfs 非二叉树遍历" />
+<meta property="og:description" content="二叉树递归+非递归版本的dfs+bfs 非二叉树遍历" />
+<link rel="canonical" href="http://localhost:4000/blog/2018/09/26/Tree-Traversal/" />
+<meta property="og:url" content="http://localhost:4000/blog/2018/09/26/Tree-Traversal/" />
 <meta property="og:site_name" content="SifanStephanie" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-09-20T00:00:00+08:00" />
+<meta property="article:published_time" content="2018-09-26T00:00:00+08:00" />
 <script type="application/ld+json">
-{"description":"Mac升级10.1.3后出现了brew 下载第三方包,不能写入/usr/local的问题","@type":"BlogPosting","url":"http://localhost:4000/blog/2018/09/20/mac_docker/","headline":"Mac update to 10.+ using brew cannot write to /usr/local","dateModified":"2018-09-20T00:00:00+08:00","datePublished":"2018-09-20T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/2018/09/20/mac_docker/"},"@context":"http://schema.org"}</script>
+{"description":"二叉树递归+非递归版本的dfs+bfs 非二叉树遍历","@type":"BlogPosting","url":"http://localhost:4000/blog/2018/09/26/Tree-Traversal/","headline":"Tree Traversal","dateModified":"2018-09-26T00:00:00+08:00","datePublished":"2018-09-26T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/2018/09/26/Tree-Traversal/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-<meta name="keywords" content="brew" />
+<meta name="keywords" content="Tree" />
 
 
 
@@ -120,7 +120,7 @@
             <header>
                 <div class="unit-head">
                     <div class="unit-inner unit-head-inner">
-                        <h1 class="entry-title" itemprop="name">Mac update to 10.+ using brew cannot write to /usr/local</h1>
+                        <h1 class="entry-title" itemprop="name">Tree Traversal</h1>
                     </div>
                 </div>
             </header>
@@ -130,7 +130,7 @@
                         <p class="date-publish">
                             Published:
                             <time itemprop="datePublished" class="date-pub updated"
-                                title="2018-09-20T00:00:00+08:00" datetime="2018-09-20T00:00:00+08:00">September 20, 2018 </time>
+                                title="2018-09-26T00:00:00+08:00" datetime="2018-09-26T00:00:00+08:00">September 26, 2018 </time>
                             by
                             <a class="author" href="/" rel="author" title="Show Author">
                                 <span itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -149,8 +149,8 @@
                              
      
         <li>
-            <a href="/blog/categories/#Tools" title="Tools">
-            Tools <span>2</span></a>
+            <a href="/blog/categories/#Algorithms" title="Algorithms">
+            Algorithms <span>1</span></a>
         </li>
     
 
@@ -163,7 +163,7 @@
     
         
         <li>
-            <a href="/blog/tags/#brew" title="brew">brew <span>1</span></a>
+            <a href="/blog/tags/#Tree" title="Tree">Tree <span>1</span></a>
         </li>
     
 
@@ -173,41 +173,27 @@
                         </ul>
                     </div>
                     <div itemprop="articleBody">
-                        <p>Using brew to download a package on Mac may occur the problem that could not write to /usr/local.</p>
+                        <p>There are two general ways for traversing a tree (not restrict to trees’ traversal): <strong>the Depth-First-Search(DFS) &amp; the Breadth-First-Search(BFS).</strong> These two ways are both traverse method while using different ways.</p>
 
-<p>Since brew could not support run by root, and normal user could not write to /usr/local.  Therefore, we need to modify the authority for /usr/local</p>
+<p>The traverse means that we start from some point P, and we go through all the points which connected to P, and repeat these process until all the points have been  visited.</p>
 
-<p>However, since Mac enables the Rootless mechanism to protect the core, enter:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>csrutil status
-</code></pre></div></div>
+<p>Here we just talk about the tree traversal based on this tree below:
+<img src="http://sifanstephanie.github.io/assets/images/posts/tree1.png" alt="image01" /></p>
 
-<p>on terminal, and it shows:</p>
+<p><strong>BFS:</strong> BFS means that we first go through all the children which connected to the root(A), which is B and C. And then we search from the first child B to get D, and we search from the second child C to get E and F. Because we could not get any nodes from D E and F. Then it is done! The sequence is <em>ABCDEF</em></p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">System</span> <span class="no">Integrity</span> <span class="no">Protection</span> <span class="ss">status: </span><span class="n">enabled</span><span class="o">.</span></code></pre></figure>
+<p><strong>DFS:</strong> For binary trees, there are three kinds of DFS: <em>Pre-Order Traversal, In-Order Traversal and Post-Order Traversal</em>. The total idea of these three traversal is to go as deep as it can to reach the leaf node, and since it could not go deeper from a leaf node, at this time, we choose another path and then go as deep as we can.</p>
 
-<p>which means the Rootless protection in enabled on your Mac.</p>
+<p>But how to choose the path?</p>
 
-<p>There are several ways to solve the problem</p>
+<p><strong>Pre-Order Traversal</strong> tells us to “visit” the current node first and its child nodes. Always the left child and then the right child. The sequence is <em>ABDCEF</em></p>
 
-<p><strong>1.Force to update brew</strong></p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; 
-</code></pre></div></div>
+<p><strong>In-Order Traversal</strong> “visit” the left branch, then the current node, and finally the right branch. The sequence is <em>DBAECF</em></p>
 
-<p><strong>2. close Rootless</strong>
-Restart your mac and press <em>command+R</em> at the same time to enter the recover mode.
-Find the terminal in the menu and enter</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>csrutil disable
-</code></pre></div></div>
+<p><strong>Post-Order Traversal</strong> “visit” its child nodes before the current node. The sequence is <em>DBEFCA</em></p>
 
-<p>and restart your computer, then you could find that:</p>
+<p>Therefore, we could determine which algorithm best fits the problem by viewing the position of the current node that we want to visit. But the most common of these is In-Order Traversal.</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">System</span> <span class="no">Integrity</span> <span class="no">Protection</span> <span class="ss">status: </span><span class="n">disabled</span><span class="o">.</span></code></pre></figure>
-
-<p>now your could use <em>sudo</em> to change the authority.</p>
-
-<p><strong>!!Using ''' csrutil enable''' to change It Back After Finished!!</strong></p>
-
-<p><strong>3. Just go to the official website to download…</strong></p>
 
                     </div>
                 </div>
@@ -220,10 +206,8 @@ Find the terminal in the menu and enter</p>
                     </div>
                     <nav class="pagination">
                         
-                            <a class="internal" rel="prev" href="/blog/2018/09/15/Git-Error/" title=" 'Git Error - ERROR: Permission to XXX.git denied to ZZZ.'"> ← Git Error - ERROR: Permission to XXX.git denied to ZZZ.</a>
+                            <a class="internal" rel="prev" href="/blog/2018/09/20/mac_docker/" title=" 'Mac update to 10.+ using brew cannot write to /usr/local'"> ← Mac update to 10.+ using brew cannot write to /usr/local</a>
                         
-                        
-                            <a class="internal" rel="next" href="/blog/2018/09/26/Tree-Traversal/" title="Next Post 'Tree Traversal'">Tree Traversal → </a>
                         
                     </nav>
                 </div>
@@ -268,7 +252,7 @@ Find the terminal in the menu and enter</p>
 </script>
 
                     <div class="comments">
-                        <button class="center-block show-hidden" title="Show Comments" data-disqus-url="http://localhost:4000/blog/2018/09/20/mac_docker/">Show Comments</button>
+                        <button class="center-block show-hidden" title="Show Comments" data-disqus-url="http://localhost:4000/blog/2018/09/26/Tree-Traversal/">Show Comments</button>
                         <div id="disqus_thread"></div>
                     </div>
                 

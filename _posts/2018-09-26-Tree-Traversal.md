@@ -23,11 +23,11 @@ Here we just talk about the tree traversal based on this tree below:
 
 But how to choose the path?
 
-Pre-Order Traversal tells us to “visit” the current node first and its child nodes. Always the left child and then the right child. The sequence is *ABDCEF*
+**Pre-Order Traversal** tells us to “visit” the current node first and its child nodes. Always the left child and then the right child. The sequence is *ABDCEF*
 
-In-Order Traversal “visit” the left branch, then the current node, and finally the right branch. The sequence is *DBAECF*
+**In-Order Traversal** “visit” the left branch, then the current node, and finally the right branch. The sequence is *DBAECF*
 
-Post-Order Traversal “visit” its child nodes before the current node. The sequence is *DBEFCA*
+**Post-Order Traversal** “visit” its child nodes before the current node. The sequence is *DBEFCA*
 
 Therefore, we could determine which algorithm best fits the problem by viewing the position of the current node that we want to visit. But the most common of these is In-Order Traversal.
 
