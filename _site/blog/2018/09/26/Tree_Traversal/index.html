@@ -194,6 +194,76 @@
 
 <p>Therefore, we could determine which algorithm best fits the problem by viewing the position of the current node that we want to visit. But the most common of these is In-Order Traversal.</p>
 
+<hr />
+<p>Now let’s talk about how to write code to do BFS and DFS on diary tree &amp; non-binary tree.</p>
+
+<p><strong>BFS Binary Tree Traverse:</strong>
+We want to store the nodes'value of each level from left to right in a list, and return the list of every level from top to bottom. <em>(leetcode 102. Binary Tree Level Order Traversal)</em>. That is we want to return <strong>[[‘A’],[‘B’,’C’],[‘D’,’E’,’F’]]</strong> for the above tree.</p>
+
+<p>The general Idea is to store all the node on the same level, and using these nodes to get to their chidden, which is on the next level.</p>
+
+<p>How to store all the nodes of the same? Yes, we think about using a QUEUE! Because we could get value by FIFO order to traverse from left to right. Below is a very traditional way to do BFS of a binary tree and it does use the idea of BFS because we just traverse each level of the tree from left to right and top to bottom.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kp">public</span> <span class="no">List</span><span class="o">&lt;</span><span class="no">List</span><span class="o">&lt;</span><span class="no">Integer</span><span class="o">&gt;&gt;</span> <span class="n">levelOrder</span><span class="p">(</span><span class="no">TreeNode</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+        <span class="no">List</span><span class="o">&lt;</span><span class="no">List</span><span class="o">&lt;</span><span class="no">Integer</span><span class="o">&gt;&gt;</span> <span class="n">res</span><span class="o">=</span><span class="n">new</span> <span class="no">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>    <span class="sr">//</span> <span class="n">store</span> <span class="n">the</span> <span class="n">result</span>
+        <span class="no">Queue</span><span class="o">&lt;</span><span class="no">TreeNode</span><span class="o">&gt;</span> <span class="n">q</span><span class="o">=</span><span class="n">new</span> <span class="no">LinkedList</span><span class="o">&lt;&gt;</span><span class="p">();</span>    <span class="sr">//</span> <span class="n">store</span> <span class="n">the</span> <span class="no">TreeNode</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">==</span><span class="n">null</span><span class="p">)</span>    <span class="o">/</span><span class="sr">/ if there is no tree node in a tree
+            return res;
+        q.offer(root); /</span><span class="o">/</span> <span class="n">root</span> <span class="n">is</span> <span class="n">the</span> <span class="n">level</span> <span class="mi">0</span><span class="p">.</span>
+        <span class="nf">/</span><span class="o">*</span> <span class="n">up</span> <span class="n">till</span> <span class="n">now</span><span class="p">,</span> <span class="n">the</span> <span class="n">q</span> <span class="n">contains</span> <span class="n">all</span> <span class="n">the</span> <span class="n">node</span> <span class="n">on</span> <span class="n">level</span> <span class="mi">0</span><span class="p">,</span> <span class="n">which</span> <span class="n">is</span> <span class="n">the</span> <span class="n">root</span> <span class="n">node</span><span class="p">.</span><span class="nf">*</span><span class="o">/</span>
+        <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="nf">isEmpty</span><span class="p">()){</span>    <span class="sr">//</span> <span class="k">until</span> <span class="n">we</span> <span class="n">visit</span> <span class="n">all</span> <span class="n">the</span> <span class="n">nodes</span>
+            <span class="sr">/* get the size of current level ! 
+            this is really important since we would get out the current nodes on level x and put in the nodes on level x+1, 
+            and this operation would break up the level constrain of the queue.*/</span>
+            <span class="n">int</span> <span class="n">size</span><span class="o">=</span><span class="n">q</span><span class="p">.</span><span class="nf">size</span><span class="p">();</span>    
+
+            <span class="sr">//</span> <span class="n">make</span> <span class="n">a</span> <span class="n">new</span> <span class="n">level</span> <span class="n">to</span> <span class="n">store</span> <span class="n">nodes</span>
+            <span class="no">List</span><span class="o">&lt;</span><span class="no">Integer</span><span class="o">&gt;</span> <span class="n">level</span><span class="o">=</span><span class="n">new</span> <span class="no">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+
+            <span class="sr">/* we just put out all the nodes from the same level one by one and add their children in to the new level list */</span>
+            <span class="k">for</span><span class="p">(</span><span class="n">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">size</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+                <span class="no">TreeNode</span> <span class="n">tmp</span><span class="o">=</span><span class="n">q</span><span class="p">.</span><span class="nf">poll</span><span class="p">();</span>
+                <span class="n">level</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">tmp</span><span class="p">.</span><span class="nf">val</span><span class="p">);</span><span class="sr">//</span>    <span class="n">visit</span> <span class="n">the</span> <span class="n">node</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">tmp</span><span class="p">.</span><span class="nf">left!</span><span class="o">=</span><span class="n">null</span><span class="p">)</span><span class="o">/</span><span class="sr">/ add the left child of the current node
+                    q.offer(tmp.left);
+                if(tmp.right!=null) /</span><span class="o">/</span> <span class="n">add</span> <span class="n">the</span> <span class="n">right</span> <span class="n">child</span> <span class="n">of</span> <span class="n">the</span> <span class="n">current</span> <span class="n">node</span>
+                    <span class="n">q</span><span class="p">.</span><span class="nf">offer</span><span class="p">(</span><span class="n">tmp</span><span class="p">.</span><span class="nf">right</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="sr">/* after we traverse all the nodes of the same level. we add the final level list to the result.*/</span>
+            <span class="n">res</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">level</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>However, could we use the DFS thoughts to solve this problem? definitely true!
+Let’s think about the DFS methods again. we need to go alone one road until we could not reach further (a leaf node). Then we can back and choose another way. Therefore, the level would increase by 1 each time we go to next level, and we need to create a new level list to store the new level just as the above code. When we come back, we only do one thing: add the node into the already exists level lists.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kp">public</span> <span class="no">List</span><span class="o">&lt;</span><span class="no">List</span><span class="o">&lt;</span><span class="no">Integer</span><span class="o">&gt;&gt;</span> <span class="n">levelOrder</span><span class="p">(</span><span class="no">TreeNode</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+        <span class="no">List</span><span class="o">&lt;</span><span class="no">List</span><span class="o">&lt;</span><span class="no">Integer</span><span class="o">&gt;&gt;</span> <span class="n">res</span><span class="o">=</span><span class="n">new</span> <span class="no">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span> <span class="sr">//</span> <span class="n">store</span> <span class="n">the</span> <span class="n">result</span>
+        <span class="n">traverse</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">res</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kp">private</span> <span class="n">void</span> <span class="n">traverse</span><span class="p">(</span><span class="no">TreeNode</span> <span class="n">node</span><span class="p">,</span> <span class="n">int</span> <span class="n">level</span><span class="p">,</span> <span class="no">List</span><span class="o">&lt;</span><span class="no">List</span><span class="o">&lt;</span><span class="no">Integer</span><span class="o">&gt;&gt;</span> <span class="n">res</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">node</span><span class="o">==</span><span class="n">null</span><span class="p">)</span> <span class="o">/</span><span class="sr">/ reach the null of the tree
+            return;
+
+        /</span><span class="o">*</span> <span class="n">first</span> <span class="n">let</span><span class="err">’</span><span class="n">s</span> <span class="n">think</span> <span class="n">about</span> <span class="n">what</span> <span class="n">is</span> <span class="n">stored</span> <span class="k">in</span> <span class="n">res?</span> 
+        <span class="no">It</span> <span class="n">is</span> <span class="n">the</span> <span class="no">List</span><span class="o">&lt;</span><span class="no">Integer</span><span class="o">&gt;</span> <span class="n">which</span> <span class="n">means</span> <span class="n">res</span> <span class="n">contains</span> <span class="n">the</span> <span class="n">list</span> <span class="n">of</span> <span class="n">each</span> <span class="n">level</span><span class="o">.</span> 
+        <span class="no">So</span> <span class="k">when</span> <span class="n">the</span> <span class="n">res</span><span class="err">’</span><span class="n">s</span> <span class="n">size</span> <span class="n">is</span> <span class="n">smaller</span> <span class="n">than</span> <span class="n">the</span> <span class="n">current</span> <span class="n">size</span> <span class="n">of</span> <span class="n">level</span> <span class="n">we</span> <span class="n">have</span> <span class="n">reached</span><span class="p">,</span> <span class="n">we</span> <span class="n">need</span> <span class="n">to</span> <span class="n">add</span> <span class="n">a</span> <span class="n">new</span> <span class="n">level</span> <span class="n">list</span><span class="o">.</span> 
+        <span class="no">NOTICE</span><span class="p">:</span> <span class="n">the</span> <span class="n">level</span> <span class="n">starts</span> <span class="n">from</span> <span class="mi">0</span> <span class="o">*</span><span class="sr">/
+        if(res.size()-1&lt;level){ 
+            res.add(new ArrayList&lt;&gt;());
+        }
+        /</span><span class="o">/</span> <span class="n">add</span> <span class="n">the</span> <span class="n">node</span> <span class="n">into</span> <span class="n">the</span> <span class="n">current</span> <span class="n">level</span> <span class="n">list</span>
+        <span class="n">res</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">level</span><span class="p">).</span><span class="nf">add</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="nf">val</span><span class="p">);</span>
+        <span class="sr">//</span><span class="n">visit</span> <span class="n">the</span> <span class="n">left</span> <span class="n">child</span> <span class="n">and</span> <span class="n">level</span> <span class="n">increase</span> <span class="n">by</span> <span class="mi">1</span> 
+        <span class="n">traverse</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="nf">left</span><span class="p">,</span><span class="n">level</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">res</span><span class="p">);</span> 
+        <span class="sr">//</span> <span class="n">visit</span> <span class="n">the</span> <span class="n">right</span> <span class="n">child</span> <span class="n">and</span> <span class="n">level</span> <span class="n">increase</span> <span class="n">by</span> <span class="mi">1</span>
+        <span class="n">traverse</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="nf">right</span><span class="p">,</span><span class="n">level</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">res</span><span class="p">);</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
 
                     </div>
                 </div>
