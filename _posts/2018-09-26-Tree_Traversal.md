@@ -104,4 +104,64 @@ public List<List<Integer>> levelOrder(TreeNode root) {
     }
 ~~~
 
+There is a really similar question of the BFS traverse. In the above question, we go through each level from top to bottom, what if we go through each level from bottom to top? *(leetcode 107. Binary Tree Level Order Traversal 2)** That is we want to return **[[‘D’,’E’,’F’],[‘B’,’C’],[‘A’]]** for the above tree.
+
+First it may seem a little strange to do this traverse? Does it mean we need to first get to the deepest level of the tree, and go back to store each level? But how to judge that we are already in the deepest level? 
+
+However, if we could insert the level list at the end of the result list, could we just insert the level list at the beginning of the result list and it’s all done!
+Brilliant! So the only thing to do is to each time add the new level list at the beginning of the res.
+
+For the traditional BFS way:
+~~~ ruby
+public List<List<Integer>> levelOrderBottom(TreeNode root) {
+        /* why do we now use the linked list? 
+        Because the linked list in based on link, so it would just cause constant time to add the new level list at the beginning of res. 
+        If we still use ArrayList as above, each time we add a new level list, we need to move all the list to next. */
+        LinkedList<List<Integer>> res=new LinkedList<>();
+        Queue<TreeNode> q=new LinkedList<>();
+        if(root==null)
+            return res;
+        q.offer(root);
+        while(!q.isEmpty()){
+            int size=q.size();
+            List<Integer> level=new ArrayList<>();
+            for(int i=0;i<size;i++){
+                TreeNode tmp=q.poll();
+                level.add(tmp.val);
+                if(tmp.left!=null)
+                    q.offer(tmp.left);
+                if(tmp.right!=null)
+                    q.offer(tmp.right);
+            }
+            // the only difference is to add the new level at the beginning of res!
+            res.addFirst(level);
+        }
+        return res;
+    }
+~~~
+
+For the DFS way:
+~~~ ruby
+public List<List<Integer>> levelOrderBottom(TreeNode root) {
+        // we need to use linked list here as stated before
+        LinkedList<List<Integer>> res=new LinkedList<>();
+        traverse(root,0,res);
+        return res;
+    }
+    private void traverse(TreeNode node, int level, LinkedList<List<Integer>> res){
+        if(node==null)
+            return;
+        if(res.size()-1<level){
+        /* the same as above we add the new level list at the beginning of the res. */
+            res.addFirst(new ArrayList<>());
+        }
+        /* Here! since each time to add the newly level in  the beginning, so there is some simple math to do to get the correct level. 
+        NOTICE: level starts from 0. */
+        res.get(res.size()-1-level).add(node.val);
+        traverse(node.left,level+1,res);
+        traverse(node.right,level+1,res);
+    }
+
+~~~
+
 

@@ -264,6 +264,64 @@ Let’s think about the DFS methods again. we need to go alone one road until we
     <span class="p">}</span>
 </code></pre></div></div>
 
+<p>There is a really similar question of the BFS traverse. In the above question, we go through each level from top to bottom, what if we go through each level from bottom to top? *(leetcode 107. Binary Tree Level Order Traversal 2)** That is we want to return <strong>[[‘D’,’E’,’F’],[‘B’,’C’],[‘A’]]</strong> for the above tree.</p>
+
+<p>First it may seem a little strange to do this traverse? Does it mean we need to first get to the deepest level of the tree, and go back to store each level? But how to judge that we are already in the deepest level?</p>
+
+<p>However, if we could insert the level list at the end of the result list, could we just insert the level list at the beginning of the result list and it’s all done!
+Brilliant! So the only thing to do is to each time add the new level list at the beginning of the res.</p>
+
+<p>For the traditional BFS way:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kp">public</span> <span class="no">List</span><span class="o">&lt;</span><span class="no">List</span><span class="o">&lt;</span><span class="no">Integer</span><span class="o">&gt;&gt;</span> <span class="n">levelOrderBottom</span><span class="p">(</span><span class="no">TreeNode</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+        <span class="sr">/* why do we now use the linked list? 
+        Because the linked list in based on link, so it would just cause constant time to add the new level list at the beginning of res. 
+        If we still use ArrayList as above, each time we add a new level list, we need to move all the list to next. */</span>
+        <span class="no">LinkedList</span><span class="o">&lt;</span><span class="no">List</span><span class="o">&lt;</span><span class="no">Integer</span><span class="o">&gt;&gt;</span> <span class="n">res</span><span class="o">=</span><span class="n">new</span> <span class="no">LinkedList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+        <span class="no">Queue</span><span class="o">&lt;</span><span class="no">TreeNode</span><span class="o">&gt;</span> <span class="n">q</span><span class="o">=</span><span class="n">new</span> <span class="no">LinkedList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">==</span><span class="n">null</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+        <span class="n">q</span><span class="p">.</span><span class="nf">offer</span><span class="p">(</span><span class="n">root</span><span class="p">);</span>
+        <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="nf">isEmpty</span><span class="p">()){</span>
+            <span class="n">int</span> <span class="n">size</span><span class="o">=</span><span class="n">q</span><span class="p">.</span><span class="nf">size</span><span class="p">();</span>
+            <span class="no">List</span><span class="o">&lt;</span><span class="no">Integer</span><span class="o">&gt;</span> <span class="n">level</span><span class="o">=</span><span class="n">new</span> <span class="no">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+            <span class="k">for</span><span class="p">(</span><span class="n">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">size</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+                <span class="no">TreeNode</span> <span class="n">tmp</span><span class="o">=</span><span class="n">q</span><span class="p">.</span><span class="nf">poll</span><span class="p">();</span>
+                <span class="n">level</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">tmp</span><span class="p">.</span><span class="nf">val</span><span class="p">);</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">tmp</span><span class="p">.</span><span class="nf">left!</span><span class="o">=</span><span class="n">null</span><span class="p">)</span>
+                    <span class="n">q</span><span class="p">.</span><span class="nf">offer</span><span class="p">(</span><span class="n">tmp</span><span class="p">.</span><span class="nf">left</span><span class="p">);</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">tmp</span><span class="p">.</span><span class="nf">right!</span><span class="o">=</span><span class="n">null</span><span class="p">)</span>
+                    <span class="n">q</span><span class="p">.</span><span class="nf">offer</span><span class="p">(</span><span class="n">tmp</span><span class="p">.</span><span class="nf">right</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="sr">//</span> <span class="n">the</span> <span class="n">only</span> <span class="n">difference</span> <span class="n">is</span> <span class="n">to</span> <span class="n">add</span> <span class="n">the</span> <span class="n">new</span> <span class="n">level</span> <span class="n">at</span> <span class="n">the</span> <span class="n">beginning</span> <span class="n">of</span> <span class="n">res!</span>
+            <span class="n">res</span><span class="p">.</span><span class="nf">addFirst</span><span class="p">(</span><span class="n">level</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>For the DFS way:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kp">public</span> <span class="no">List</span><span class="o">&lt;</span><span class="no">List</span><span class="o">&lt;</span><span class="no">Integer</span><span class="o">&gt;&gt;</span> <span class="n">levelOrderBottom</span><span class="p">(</span><span class="no">TreeNode</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+        <span class="sr">//</span> <span class="n">we</span> <span class="n">need</span> <span class="n">to</span> <span class="n">use</span> <span class="n">linked</span> <span class="n">list</span> <span class="n">here</span> <span class="n">as</span> <span class="n">stated</span> <span class="n">before</span>
+        <span class="no">LinkedList</span><span class="o">&lt;</span><span class="no">List</span><span class="o">&lt;</span><span class="no">Integer</span><span class="o">&gt;&gt;</span> <span class="n">res</span><span class="o">=</span><span class="n">new</span> <span class="no">LinkedList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+        <span class="n">traverse</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">res</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kp">private</span> <span class="n">void</span> <span class="n">traverse</span><span class="p">(</span><span class="no">TreeNode</span> <span class="n">node</span><span class="p">,</span> <span class="n">int</span> <span class="n">level</span><span class="p">,</span> <span class="no">LinkedList</span><span class="o">&lt;</span><span class="no">List</span><span class="o">&lt;</span><span class="no">Integer</span><span class="o">&gt;&gt;</span> <span class="n">res</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">node</span><span class="o">==</span><span class="n">null</span><span class="p">)</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="nf">size</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="o">&lt;</span><span class="n">level</span><span class="p">){</span>
+        <span class="sr">/* the same as above we add the new level list at the beginning of the res. */</span>
+            <span class="n">res</span><span class="p">.</span><span class="nf">addFirst</span><span class="p">(</span><span class="n">new</span> <span class="no">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">());</span>
+        <span class="p">}</span>
+        <span class="sr">/* Here! since each time to add the newly level in  the beginning, so there is some simple math to do to get the correct level. 
+        NOTICE: level starts from 0. */</span>
+        <span class="n">res</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="nf">size</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">level</span><span class="p">).</span><span class="nf">add</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="nf">val</span><span class="p">);</span>
+        <span class="n">traverse</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="nf">left</span><span class="p">,</span><span class="n">level</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">res</span><span class="p">);</span>
+        <span class="n">traverse</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="nf">right</span><span class="p">,</span><span class="n">level</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">res</span><span class="p">);</span>
+    <span class="p">}</span>
+
+</code></pre></div></div>
+
 
                     </div>
                 </div>
