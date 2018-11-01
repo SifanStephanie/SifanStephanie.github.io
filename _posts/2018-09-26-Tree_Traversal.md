@@ -41,7 +41,7 @@ The general Idea is to store all the node on the same level, and using these nod
 
 How to store all the nodes of the same? Yes, we think about using a QUEUE! Because we could get value by FIFO order to traverse from left to right. Below is a very traditional way to do BFS of a binary tree and it does use the idea of BFS because we just traverse each level of the tree from left to right and top to bottom.
 
-
+For the traditional BFS way:
 ~~~ ruby
 public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> res=new ArrayList<>();    // store the result
@@ -78,6 +78,7 @@ public List<List<Integer>> levelOrder(TreeNode root) {
 However, could we use the DFS thoughts to solve this problem? definitely true!
 Let’s think about the DFS methods again. we need to go alone one road until we could not reach further (a leaf node). Then we can back and choose another way. Therefore, the level would increase by 1 each time we go to next level, and we need to create a new level list to store the new level just as the above code. When we come back, we only do one thing: add the node into the already exists level lists.
 
+For the DFS way:
 ~~~ ruby
 public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> res=new ArrayList<>(); // store the result
@@ -104,7 +105,7 @@ public List<List<Integer>> levelOrder(TreeNode root) {
     }
 ~~~
 
-There is a really similar question of the BFS traverse. In the above question, we go through each level from top to bottom, what if we go through each level from bottom to top? *(leetcode 107. Binary Tree Level Order Traversal 2)** That is we want to return **[[‘D’,’E’,’F’],[‘B’,’C’],[‘A’]]** for the above tree.
+There is a really similar question of the BFS traverse. In the above question, we go through each level from top to bottom, what if we go through each level from bottom to top? *(leetcode 107. Binary Tree Level Order Traversal 2)* That is we want to return **[[‘D’,’E’,’F’],[‘B’,’C’],[‘A’]]** for the above tree.
 
 First it may seem a little strange to do this traverse? Does it mean we need to first get to the deepest level of the tree, and go back to store each level? But how to judge that we are already in the deepest level? 
 
