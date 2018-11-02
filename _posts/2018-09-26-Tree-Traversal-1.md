@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Tree Traversal"
+title: "Tree Traversal 1"
 description: "二叉树递归+非递归版本的dfs+bfs 非二叉树遍历"
 categories: [Algorithms]
 tags: [Tree]

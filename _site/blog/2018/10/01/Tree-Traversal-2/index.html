@@ -173,65 +173,69 @@
                         </ul>
                     </div>
                     <div itemprop="articleBody">
-                        <p>** Please Read the Tree Traversal 1 First! **</p>
+                        <p><strong>Please Read the Tree Traversal 1 First!</strong></p>
 
 <p><strong>DFS Binary Tree:</strong>
 Now let’s talk about the Depth-First-Search(DFS) of a binary tree.</p>
 
 <p>There are three DFS ways: <strong>Pre-Order Traversal</strong>, <strong>In-Order Traversal</strong> and <strong>Post-Order Traversal</strong>, and the easiest way to achieve these three traversal ways is to use recursion. Because each time we need to go deeper along some path until reaching the leaf nodes, and then the recursion way could help us to track the path.</p>
 
-<p><strong>Pre-Order Traversal Recursion:</strong></p>
-<pre><code class="language-Ruby">List&lt;Integer&gt; res=new ArrayList&lt;&gt;();
-    public List&lt;Integer&gt; preorderTraversal(TreeNode root){
-        preOrder(root);
-        return res;  
-    }
-    private void preOrder(TreeNode root){
-        if(root==null)
-            return;
-        /* add the value first and then traverse the left and then right child.*/
-        res.add(root.val); 
-        preOrder(root.left);
-        preOrder(root.right);
-    }
-</code></pre>
-<p><strong>In-Order Traversal Recursion:</strong></p>
-<pre><code class="language-Ruby">List&lt;Integer&gt; res=new ArrayList&lt;&gt;();
-    public List&lt;Integer&gt; inorderTraversal(TreeNode root){
-        inOrder(root);
-        return res;  
-    }
-    private void inOrder(TreeNode root){
-        if(root==null)
-            return;
-        inOrder(root.left); // we need to visit the left first
-        /* after visit the left child of the node, 
-        we then visit the node and add the value. */
-        res.add(root.val); 
-        inOrder(root.right);// then we go to the right child of the node
-    }
-</code></pre>
-<p><strong>Post-Order Traversal Recursion:</strong></p>
-<pre><code class="language-Ruby">List&lt;Integer&gt; res=new ArrayList&lt;&gt;();
-    public List&lt;Integer&gt; postorderTraversal(TreeNode root) {
-        postOrder(root);
-        return res;
+<p>Pre-Order Traversal Recursion:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">List</span><span class="o">&lt;</span><span class="no">Integer</span><span class="o">&gt;</span> <span class="n">res</span><span class="o">=</span><span class="n">new</span> <span class="no">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+    <span class="kp">public</span> <span class="no">List</span><span class="o">&lt;</span><span class="no">Integer</span><span class="o">&gt;</span> <span class="n">preorderTraversal</span><span class="p">(</span><span class="no">TreeNode</span> <span class="n">root</span><span class="p">){</span>
+        <span class="n">preOrder</span><span class="p">(</span><span class="n">root</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">res</span><span class="p">;</span>  
+    <span class="p">}</span>
+    <span class="kp">private</span> <span class="n">void</span> <span class="n">preOrder</span><span class="p">(</span><span class="no">TreeNode</span> <span class="n">root</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">==</span><span class="n">null</span><span class="p">)</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="sr">/* add the value first and then traverse the left and then right child.*/</span>
+        <span class="n">res</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="nf">val</span><span class="p">);</span> 
+        <span class="n">preOrder</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="nf">left</span><span class="p">);</span>
+        <span class="n">preOrder</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="nf">right</span><span class="p">);</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+<p>In-Order Traversal Recursion:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">List</span><span class="o">&lt;</span><span class="no">Integer</span><span class="o">&gt;</span> <span class="n">res</span><span class="o">=</span><span class="n">new</span> <span class="no">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+    <span class="kp">public</span> <span class="no">List</span><span class="o">&lt;</span><span class="no">Integer</span><span class="o">&gt;</span> <span class="n">inorderTraversal</span><span class="p">(</span><span class="no">TreeNode</span> <span class="n">root</span><span class="p">){</span>
+        <span class="n">inOrder</span><span class="p">(</span><span class="n">root</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">res</span><span class="p">;</span>  
+    <span class="p">}</span>
+    <span class="kp">private</span> <span class="n">void</span> <span class="n">inOrder</span><span class="p">(</span><span class="no">TreeNode</span> <span class="n">root</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">==</span><span class="n">null</span><span class="p">)</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="n">inOrder</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="nf">left</span><span class="p">);</span> <span class="sr">//</span> <span class="n">we</span> <span class="n">need</span> <span class="n">to</span> <span class="n">visit</span> <span class="n">the</span> <span class="n">left</span> <span class="n">first</span>
+        <span class="sr">/* after visit the left child of the node, 
+        we then visit the node and add the value. */</span>
+        <span class="n">res</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="nf">val</span><span class="p">);</span> 
+        <span class="n">inOrder</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="nf">right</span><span class="p">);</span><span class="sr">//</span> <span class="k">then</span> <span class="n">we</span> <span class="n">go</span> <span class="n">to</span> <span class="n">the</span> <span class="n">right</span> <span class="n">child</span> <span class="n">of</span> <span class="n">the</span> <span class="n">node</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+<p>Post-Order Traversal Recursion:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">List</span><span class="o">&lt;</span><span class="no">Integer</span><span class="o">&gt;</span> <span class="n">res</span><span class="o">=</span><span class="n">new</span> <span class="no">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+    <span class="kp">public</span> <span class="no">List</span><span class="o">&lt;</span><span class="no">Integer</span><span class="o">&gt;</span> <span class="n">postorderTraversal</span><span class="p">(</span><span class="no">TreeNode</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">postOrder</span><span class="p">(</span><span class="n">root</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
 
-    }
-    private void traverse(TreeNode root){
-        if(root==null)
-            return ;
-        postOrder(root.left);
-        postOrder(root.right);
-        /* after visiting the left and the right children, 
-        we visit the node itself at last.*/
-        res.add(root.val); 
-    }
-</code></pre>
-<p>From the above these recursion codes, we could easily find that using the recursion to do the traversal is really simple, just keep in mind at what order to traverse the tree. To be simplify, just remind the position of visiting the node itself! 
-1, preOrder, visit the node first!
-2, inOrder, visit the node between the left and the right child!
-3, postOrder, visit the node last!</p>
+    <span class="p">}</span>
+    <span class="kp">private</span> <span class="n">void</span> <span class="n">traverse</span><span class="p">(</span><span class="no">TreeNode</span> <span class="n">root</span><span class="p">){</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">root</span><span class="o">==</span><span class="n">null</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">;</span>
+        <span class="n">postOrder</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="nf">left</span><span class="p">);</span>
+        <span class="n">postOrder</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="nf">right</span><span class="p">);</span>
+        <span class="sr">/* after visiting the left and the right children, 
+        we visit the node itself at last.*/</span>
+        <span class="n">res</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">root</span><span class="p">.</span><span class="nf">val</span><span class="p">);</span> 
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>From the above these recursion codes, we could easily find that using the recursion to do the traversal is really simple, just keep in mind at what order to traverse the tree. To be simplify, just remind the position of visiting the node itself!</p>
+
+<p>1, preOrder, visit the node first!</p>
+
+<p>2, inOrder, visit the node between the left and the right child!</p>
+
+<p>3, postOrder, visit the node last!</p>
 
                     </div>
                 </div>
@@ -244,7 +248,7 @@ Now let’s talk about the Depth-First-Search(DFS) of a binary tree.</p>
                     </div>
                     <nav class="pagination">
                         
-                            <a class="internal" rel="prev" href="/blog/2018/09/26/Tree-Traversal-1/" title=" 'Tree Traversal'"> ← Tree Traversal</a>
+                            <a class="internal" rel="prev" href="/blog/2018/09/26/Tree-Traversal-1/" title=" 'Tree Traversal 1'"> ← Tree Traversal 1</a>
                         
                         
                     </nav>

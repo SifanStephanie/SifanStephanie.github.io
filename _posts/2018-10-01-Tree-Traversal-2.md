@@ -9,15 +9,15 @@ redirect_from:
 ---
  
 
-** Please Read the Tree Traversal 1 First! **
+**Please Read the Tree Traversal 1 First!**
 
 **DFS Binary Tree:**
 Now let’s talk about the Depth-First-Search(DFS) of a binary tree.
 
 There are three DFS ways: **Pre-Order Traversal**, **In-Order Traversal** and **Post-Order Traversal**, and the easiest way to achieve these three traversal ways is to use recursion. Because each time we need to go deeper along some path until reaching the leaf nodes, and then the recursion way could help us to track the path.
 
-**Pre-Order Traversal Recursion:**
-~~~ Ruby
+Pre-Order Traversal Recursion:
+~~~ ruby
 List<Integer> res=new ArrayList<>();
     public List<Integer> preorderTraversal(TreeNode root){
         preOrder(root);
@@ -32,8 +32,8 @@ List<Integer> res=new ArrayList<>();
         preOrder(root.right);
     }
 ~~~
-**In-Order Traversal Recursion:**
-~~~ Ruby
+In-Order Traversal Recursion:
+~~~ ruby
 List<Integer> res=new ArrayList<>();
     public List<Integer> inorderTraversal(TreeNode root){
         inOrder(root);
@@ -49,8 +49,8 @@ List<Integer> res=new ArrayList<>();
         inOrder(root.right);// then we go to the right child of the node
     }
 ~~~
-**Post-Order Traversal Recursion:**
-~~~ Ruby
+Post-Order Traversal Recursion:
+~~~ ruby
 List<Integer> res=new ArrayList<>();
     public List<Integer> postorderTraversal(TreeNode root) {
         postOrder(root);
@@ -67,7 +67,11 @@ List<Integer> res=new ArrayList<>();
         res.add(root.val); 
     }
 ~~~
+
 From the above these recursion codes, we could easily find that using the recursion to do the traversal is really simple, just keep in mind at what order to traverse the tree. To be simplify, just remind the position of visiting the node itself! 
+
 1, preOrder, visit the node first!
+
 2, inOrder, visit the node between the left and the right child!
+
 3, postOrder, visit the node last!
