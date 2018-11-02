@@ -1,4 +1,62 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2018-11-01T16:56:03+08:00</updated><id>http://localhost:4000/</id><title type="html">SifanStephanie</title><subtitle>Be Foolish.</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;job_title&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;&quot;sifanl@andrew.cmu.edu&quot;, &quot;social_links&quot;=&gt;[{&quot;name&quot;=&gt;&quot;facebook&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;github&quot;, &quot;url&quot;=&gt;&quot;https://github.com/SifanStephanie/SifanStephanie.github.io&quot;}, {&quot;name&quot;=&gt;&quot;instagram&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;linkedin&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;stackoverflow&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;twitter&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;vk&quot;, &quot;url&quot;=&gt;nil}]}</name><email>sifanl@andrew.cmu.edu</email></author><entry><title type="html">Tree Traversal</title><link href="http://localhost:4000/blog/2018/09/26/Tree_Traversal/" rel="alternate" type="text/html" title="Tree Traversal" /><published>2018-09-26T00:00:00+08:00</published><updated>2018-09-26T00:00:00+08:00</updated><id>http://localhost:4000/blog/2018/09/26/Tree_Traversal</id><content type="html" xml:base="http://localhost:4000/blog/2018/09/26/Tree_Traversal/">&lt;p&gt;There are two general ways for traversing a tree (not restrict to trees’ traversal): &lt;strong&gt;the Depth-First-Search(DFS) &amp;amp; the Breadth-First-Search(BFS).&lt;/strong&gt; These two ways are both traverse method while using different ways.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2018-11-05T18:05:43+08:00</updated><id>http://localhost:4000/</id><title type="html">SifanStephanie</title><subtitle>Be Foolish.</subtitle><author><name>{&quot;name&quot;=&gt;nil, &quot;job_title&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;&quot;sifanl@andrew.cmu.edu&quot;, &quot;social_links&quot;=&gt;[{&quot;name&quot;=&gt;&quot;facebook&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;github&quot;, &quot;url&quot;=&gt;&quot;https://github.com/SifanStephanie/SifanStephanie.github.io&quot;}, {&quot;name&quot;=&gt;&quot;instagram&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;linkedin&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;stackoverflow&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;twitter&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;vk&quot;, &quot;url&quot;=&gt;nil}]}</name><email>sifanl@andrew.cmu.edu</email></author><entry><title type="html">Tree Traversal 2</title><link href="http://localhost:4000/blog/2018/10/01/Tree-Traversal-2/" rel="alternate" type="text/html" title="Tree Traversal 2" /><published>2018-10-01T00:00:00+08:00</published><updated>2018-10-01T00:00:00+08:00</updated><id>http://localhost:4000/blog/2018/10/01/Tree-Traversal-2</id><content type="html" xml:base="http://localhost:4000/blog/2018/10/01/Tree-Traversal-2/">&lt;p&gt;** Please Read the Tree Traversal 1 First! **&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;DFS Binary Tree:&lt;/strong&gt;
+Now let’s talk about the Depth-First-Search(DFS) of a binary tree.&lt;/p&gt;
+
+&lt;p&gt;There are three DFS ways: &lt;strong&gt;Pre-Order Traversal&lt;/strong&gt;, &lt;strong&gt;In-Order Traversal&lt;/strong&gt; and &lt;strong&gt;Post-Order Traversal&lt;/strong&gt;, and the easiest way to achieve these three traversal ways is to use recursion. Because each time we need to go deeper along some path until reaching the leaf nodes, and then the recursion way could help us to track the path.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Pre-Order Traversal Recursion:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-Ruby&quot;&gt;List&amp;lt;Integer&amp;gt; res=new ArrayList&amp;lt;&amp;gt;();
+    public List&amp;lt;Integer&amp;gt; preorderTraversal(TreeNode root){
+        preOrder(root);
+        return res;  
+    }
+    private void preOrder(TreeNode root){
+        if(root==null)
+            return;
+        /* add the value first and then traverse the left and then right child.*/
+        res.add(root.val); 
+        preOrder(root.left);
+        preOrder(root.right);
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;In-Order Traversal Recursion:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-Ruby&quot;&gt;List&amp;lt;Integer&amp;gt; res=new ArrayList&amp;lt;&amp;gt;();
+    public List&amp;lt;Integer&amp;gt; inorderTraversal(TreeNode root){
+        inOrder(root);
+        return res;  
+    }
+    private void inOrder(TreeNode root){
+        if(root==null)
+            return;
+        inOrder(root.left); // we need to visit the left first
+        /* after visit the left child of the node, 
+        we then visit the node and add the value. */
+        res.add(root.val); 
+        inOrder(root.right);// then we go to the right child of the node
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;Post-Order Traversal Recursion:&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-Ruby&quot;&gt;List&amp;lt;Integer&amp;gt; res=new ArrayList&amp;lt;&amp;gt;();
+    public List&amp;lt;Integer&amp;gt; postorderTraversal(TreeNode root) {
+        postOrder(root);
+        return res;
+
+    }
+    private void traverse(TreeNode root){
+        if(root==null)
+            return ;
+        postOrder(root.left);
+        postOrder(root.right);
+        /* after visiting the left and the right children, 
+        we visit the node itself at last.*/
+        res.add(root.val); 
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;From the above these recursion codes, we could easily find that using the recursion to do the traversal is really simple, just keep in mind at what order to traverse the tree. To be simplify, just remind the position of visiting the node itself! 
+1, preOrder, visit the node first!
+2, inOrder, visit the node between the left and the right child!
+3, postOrder, visit the node last!&lt;/p&gt;</content><author><name>{&quot;name&quot;=&gt;nil, &quot;job_title&quot;=&gt;nil, &quot;location&quot;=&gt;nil, &quot;email&quot;=&gt;&quot;sifanl@andrew.cmu.edu&quot;, &quot;social_links&quot;=&gt;[{&quot;name&quot;=&gt;&quot;facebook&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;github&quot;, &quot;url&quot;=&gt;&quot;https://github.com/SifanStephanie/SifanStephanie.github.io&quot;}, {&quot;name&quot;=&gt;&quot;instagram&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;linkedin&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;stackoverflow&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;twitter&quot;, &quot;url&quot;=&gt;nil}, {&quot;name&quot;=&gt;&quot;vk&quot;, &quot;url&quot;=&gt;nil}]}</name><email>sifanl@andrew.cmu.edu</email></author><category term="Tree" /><summary type="html">** Please Read the Tree Traversal 1 First! **</summary></entry><entry><title type="html">Tree Traversal</title><link href="http://localhost:4000/blog/2018/09/26/Tree-Traversal-1/" rel="alternate" type="text/html" title="Tree Traversal" /><published>2018-09-26T00:00:00+08:00</published><updated>2018-09-26T00:00:00+08:00</updated><id>http://localhost:4000/blog/2018/09/26/Tree-Traversal-1</id><content type="html" xml:base="http://localhost:4000/blog/2018/09/26/Tree-Traversal-1/">&lt;p&gt;There are two general ways for traversing a tree (not restrict to trees’ traversal): &lt;strong&gt;the Depth-First-Search(DFS) &amp;amp; the Breadth-First-Search(BFS).&lt;/strong&gt; These two ways are both traverse method while using different ways.&lt;/p&gt;
 
 &lt;p&gt;The traverse means that we start from some point P, and we go through all the points which connected to P, and repeat these process until all the points have been  visited.&lt;/p&gt;
 
@@ -91,7 +149,7 @@ Let’s think about the DFS methods again. we need to go alone one road until we
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;There is a really similar question of the BFS traverse. In the above question, we go through each level from top to bottom, what if we go through each level from bottom to top? *(leetcode 107. Binary Tree Level Order Traversal 2)** That is we want to return &lt;strong&gt;[[‘D’,’E’,’F’],[‘B’,’C’],[‘A’]]&lt;/strong&gt; for the above tree.&lt;/p&gt;
+&lt;p&gt;There is a really similar question of the BFS traverse. In the above question, we go through each level from top to bottom, what if we go through each level from bottom to top? &lt;em&gt;(leetcode 107. Binary Tree Level Order Traversal 2)&lt;/em&gt; That is we want to return &lt;strong&gt;[[‘D’,’E’,’F’],[‘B’,’C’],[‘A’]]&lt;/strong&gt; for the above tree.&lt;/p&gt;
 
 &lt;p&gt;First it may seem a little strange to do this traverse? Does it mean we need to first get to the deepest level of the tree, and go back to store each level? But how to judge that we are already in the deepest level?&lt;/p&gt;
 
