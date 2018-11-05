@@ -178,7 +178,8 @@
 <p><strong>DFS Binary Tree:</strong>
 Now let’s talk about the Depth-First-Search(DFS) of a binary tree.</p>
 
-<p>There are three DFS ways: <strong>Pre-Order Traversal</strong>, <strong>In-Order Traversal</strong> and <strong>Post-Order Traversal</strong>, and the easiest way to achieve these three traversal ways is to use recursion. Because each time we need to go deeper along some path until reaching the leaf nodes, and then the recursion way could help us to track the path.</p>
+<p><strong>Recursion:</strong>
+There are three DFS ways: <strong>Pre-Order Traversal</strong>, <strong>In-Order Traversal</strong> and <strong>Post-Order Traversal</strong>, and the easiest way to achieve these three traversal ways is to use recursion. Because each time we need to go deeper along some path until reaching the leaf nodes, and then the recursion way could help us to track the path.</p>
 
 <p>Pre-Order Traversal Recursion:</p>
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">List</span><span class="o">&lt;</span><span class="no">Integer</span><span class="o">&gt;</span> <span class="n">res</span><span class="o">=</span><span class="n">new</span> <span class="no">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
@@ -236,6 +237,77 @@ Now let’s talk about the Depth-First-Search(DFS) of a binary tree.</p>
 <p>2, inOrder, visit the node between the left and the right child!</p>
 
 <p>3, postOrder, visit the node last!</p>
+
+<hr />
+<p><strong>Iteration:</strong></p>
+
+<p>One way to practice the ability of writing code and better understating recursion is to change the recursion into iteration. It is actually not that hard because the recursion has persevered the inter-results in stacks automatically, we could also use the stacks to persevere the inter-result by ourselves through pushing and poping.</p>
+
+<p>For the elegant of the code and the unified form, we use the same Structure for these three traverse. But there is a slightly different change in post-Order Traversal. We will discuss the detail later.</p>
+
+<p><strong>Pre-Order Traversal Iteration (144. Binary Tree Preorder Traversal):</strong></p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kp">public</span> <span class="no">List</span><span class="o">&lt;</span><span class="no">Integer</span><span class="o">&gt;</span> <span class="n">preorderTraversal</span><span class="p">(</span><span class="no">TreeNode</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+        <span class="no">List</span><span class="o">&lt;</span><span class="no">Integer</span><span class="o">&gt;</span> <span class="n">res</span> <span class="o">=</span> <span class="n">new</span> <span class="no">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+        <span class="no">Stack</span><span class="o">&lt;</span><span class="no">TreeNode</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="n">new</span> <span class="no">Stack</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+        <span class="no">TreeNode</span> <span class="nb">p</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
+        <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">stack</span><span class="p">.</span><span class="nf">isEmpty</span><span class="p">()</span> <span class="o">||</span> <span class="nb">p</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="nb">p</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">stack</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nb">p</span><span class="p">);</span>
+                <span class="n">res</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="nb">p</span><span class="p">.</span><span class="nf">val</span><span class="p">);</span>  <span class="sr">//</span> <span class="n">visit</span> <span class="n">the</span> <span class="n">node</span> <span class="no">FIRST</span><span class="o">!</span>
+                <span class="nb">p</span> <span class="o">=</span> <span class="nb">p</span><span class="p">.</span><span class="nf">left</span><span class="p">;</span> 
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="no">TreeNode</span> <span class="n">node</span> <span class="o">=</span> <span class="n">stack</span><span class="p">.</span><span class="nf">pop</span><span class="p">();</span>
+                <span class="nb">p</span> <span class="o">=</span> <span class="n">node</span><span class="p">.</span><span class="nf">right</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>In-Order Traversal Iteration (94. Binary Tree Inorder Traversal):</strong></p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kp">public</span> <span class="no">List</span><span class="o">&lt;</span><span class="no">Integer</span><span class="o">&gt;</span> <span class="n">inorderTraversal</span><span class="p">(</span><span class="no">TreeNode</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+        <span class="no">List</span><span class="o">&lt;</span><span class="no">Integer</span><span class="o">&gt;</span> <span class="n">res</span> <span class="o">=</span> <span class="n">new</span> <span class="no">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+        <span class="no">Stack</span><span class="o">&lt;</span><span class="no">TreeNode</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="n">new</span> <span class="no">Stack</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+        <span class="no">TreeNode</span> <span class="nb">p</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
+        <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">stack</span><span class="p">.</span><span class="nf">isEmpty</span><span class="p">()</span> <span class="o">||</span> <span class="nb">p</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="nb">p</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">stack</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nb">p</span><span class="p">);</span>
+                <span class="nb">p</span> <span class="o">=</span> <span class="nb">p</span><span class="p">.</span><span class="nf">left</span><span class="p">;</span> 
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="no">TreeNode</span> <span class="n">node</span> <span class="o">=</span> <span class="n">stack</span><span class="p">.</span><span class="nf">pop</span><span class="p">();</span>
+                <span class="n">res</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">node</span><span class="p">.</span><span class="nf">val</span><span class="p">);</span>  <span class="sr">//</span> <span class="n">visit</span> <span class="n">the</span> <span class="n">node</span> <span class="n">after</span> <span class="n">all</span> <span class="n">left</span> <span class="n">children</span>
+                <span class="nb">p</span> <span class="o">=</span> <span class="n">node</span><span class="p">.</span><span class="nf">right</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Post-Order Traversal Iteration (145. Binary Tree Postorder Traversal):</strong></p>
+
+<p>First let’s look at the tree we have used in Tree Traversal 1.
+<img src="http://sifanstephanie.github.io/assets/images/posts/tree1.png" alt="image01" /></p>
+
+<p>The Post-Order Traversal is DBEFCA because we first visit the left chid and right chid and finally visit the node itself. Now let’s think about the Pre-Order Traversal, as stated before, we go to the node itself first, and then its children from left to right. Therefore, if we go to the node itself first still, and then its children but this time from right to left, what could we get? Yes, the reverse of the order of the Pots-Order Traversal.</p>
+
+<p>That is the reason why we use the LinkedList structure here, because we need to add the result every time at the beginning of the result list (for the reverse). The difference between LinkedList and ArrayList is that ArrayList is a dynamic array, if we want to add something in the beginning, we need to move all the element in the array one to the right, this would cause O(n). However, the LinkedList is a singly linked list connecting each other with ptr, so we just set up a connection at the beginning of the list for inserting something at the front, and this would cause just O(1). Then the only thing to do is traverse the right children first and then left.</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kp">public</span> <span class="no">List</span><span class="o">&lt;</span><span class="no">Integer</span><span class="o">&gt;</span> <span class="n">postorderTraversal</span><span class="p">(</span><span class="no">TreeNode</span> <span class="n">root</span><span class="p">)</span> <span class="p">{</span>
+        <span class="no">LinkedList</span><span class="o">&lt;</span><span class="no">Integer</span><span class="o">&gt;</span> <span class="n">res</span> <span class="o">=</span> <span class="n">new</span> <span class="no">LinkedList</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="sr">//</span> <span class="n">using</span> <span class="n">linked</span> <span class="n">list</span>
+        <span class="no">Stack</span><span class="o">&lt;</span><span class="no">TreeNode</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="n">new</span> <span class="no">Stack</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+        <span class="no">TreeNode</span> <span class="nb">p</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
+        <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">stack</span><span class="p">.</span><span class="nf">isEmpty</span><span class="p">()</span> <span class="o">||</span> <span class="nb">p</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="nb">p</span> <span class="o">!=</span> <span class="n">null</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">stack</span><span class="p">.</span><span class="nf">push</span><span class="p">(</span><span class="nb">p</span><span class="p">);</span>
+                <span class="n">res</span><span class="p">.</span><span class="nf">addFirst</span><span class="p">(</span><span class="nb">p</span><span class="p">.</span><span class="nf">val</span><span class="p">);</span>  <span class="sr">//</span> <span class="n">just</span> <span class="n">ad</span> <span class="n">the</span> <span class="n">preorder</span> <span class="n">but</span> <span class="n">adding</span> <span class="n">at</span> <span class="n">the</span> <span class="n">beginning</span> <span class="n">to</span> <span class="n">make</span> <span class="n">the</span> <span class="n">reverse</span><span class="p">.</span>
+                <span class="nf">p</span> <span class="o">=</span> <span class="nb">p</span><span class="p">.</span><span class="nf">right</span><span class="p">;</span>             <span class="sr">//</span> <span class="n">visit</span> <span class="n">the</span> <span class="n">right</span> <span class="n">children</span> <span class="n">first</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="no">TreeNode</span> <span class="n">node</span> <span class="o">=</span> <span class="n">stack</span><span class="p">.</span><span class="nf">pop</span><span class="p">();</span>
+                <span class="nb">p</span> <span class="o">=</span> <span class="n">node</span><span class="p">.</span><span class="nf">left</span><span class="p">;</span>           <span class="sr">//</span> <span class="k">then</span> <span class="n">visit</span> <span class="n">the</span> <span class="n">left</span> <span class="n">children</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div></div>
 
                     </div>
                 </div>
