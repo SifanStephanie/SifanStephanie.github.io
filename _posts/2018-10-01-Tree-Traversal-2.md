@@ -132,7 +132,7 @@ First let’s look at the tree we have used in Tree Traversal 1.
 
 ![image01](http://sifanstephanie.github.io/assets/images/posts/tree1.png)
 
-The Post-Order Traversal is DBEFCA because we first visit the left chid and right chid and finally visit the node itself. Now let’s think about the Pre-Order Traversal, as stated before, we go to the node itself first, and then its children from left to right. Therefore, if we go to the node itself first still, and then its children but this time from right to left, what could we get? Yes, the reverse of the order of the Pots-Order Traversal. 
+The Post-Order Traversal is DBEFCA because we first visit the left chid and right chid and finally visit the node itself. Now let’s think about the Pre-Order Traversal, as stated before, we go to the node itself first, and then its children from left to right. Therefore, if we go to the node itself first still, and then its children but this time from right to left, what could we get? Yes, the reverse of the order of the Post-Order Traversal. 
 
 That is the reason why we use the LinkedList structure here, because we need to add the result every time at the beginning of the result list (for the reverse). The difference between LinkedList and ArrayList is that ArrayList is a dynamic array, if we want to add something in the beginning, we need to move all the element in the array one to the right, this would cause O(n). However, the LinkedList is a singly linked list connecting each other with ptr, so we just set up a connection at the beginning of the list for inserting something at the front, and this would cause just O(1). Then the only thing to do is traverse the right children first and then left.
 
