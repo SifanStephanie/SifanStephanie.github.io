@@ -13,11 +13,12 @@ redirect_from:
 
 After discussing about the binary tree, let’s turn to the N-ary tree, which means that a node many have more than two children, and we store these children using List<Node> children;
 
-The basic idea to do the traverse is exactly the same as the binary tree except we need to using **Loop** to traverse all their children one by one.(The same idea as traverse the left and right children of the binary tree.) 
+The basic idea to do the traverse is exactly the same as the binary tree except we need to using **Loop** to traverse the children of a node one by one.(The same idea as traverse the left and right children of the binary tree.) 
 
 **The BFS Traverse( Leetcode 429. N-ary Tree Level Order Traversal):**
 
 Recall from Binary Tree BFS Traverse, we using QUEUE to store the node in the same level and each time add the left and right children to the queue. Now we just need to add the whole children list into the queue.
+
 For the BFS way:
 ~~~ ruby
 public List<List<Integer>> levelOrder(Node root) {
@@ -44,6 +45,7 @@ public List<List<Integer>> levelOrder(Node root) {
 ~~~
 
 Also as stated before, if we keep track each level, we could achieve the BFS using DFS way.
+
 For the DFS way:
 ~~~ ruby
     public List<List<Integer>> levelOrder(Node root) {
